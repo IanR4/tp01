@@ -6,7 +6,7 @@ int iniciar_servidor(void)
 {
 	int socket_servidor;
 
-	struct addrinfo hints, *servinfo, *p;
+	struct addrinfo hints, *servinfo;
 
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_INET;
@@ -84,7 +84,6 @@ t_list* recibir_paquete(int socket_cliente)
 	int tamanio;
 
 	buffer = recibir_buffer(&size, socket_cliente);
-	printf("Me llego el paquete");
 	while(desplazamiento < size)
 	{
 		memcpy(&tamanio, buffer + desplazamiento, sizeof(int));
